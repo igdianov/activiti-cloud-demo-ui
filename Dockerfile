@@ -2,9 +2,11 @@ FROM node:carbon
 
 WORKDIR /home/node/app
 
-COPY . .
 
-RUN npm install && npm run build --base-href "/ui/" && rm -rf node_modules
+COPY . .
+ENV BASE-HREF "/"
+
+RUN npm install && npm run build --base-href $BASE-HREF && rm -rf node_modules
 RUN chmod +x cmd.sh
 
 RUN npm install -g http-server

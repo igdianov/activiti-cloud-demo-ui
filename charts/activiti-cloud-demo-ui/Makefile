@@ -3,6 +3,7 @@ CURRENT=$(pwd)
 NAME := activiti-cloud-demo-ui
 OS := $(shell uname)
 RELEASE_VERSION := $(shell cat ../../VERSION)
+BASE-HREF := "/ui"
 
 build: clean
 	rm -rf requirements.lock
