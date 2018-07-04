@@ -4,7 +4,7 @@ WORKDIR /home/node/app
 
 
 COPY . .
-ENV BASEHREF "/"
+ENV BASEHREF ${BASEHREF:"/"}
 
 RUN [ "sh", "-c","npm install && npm run build -- --base-href $BASEHREF --deploy-url $BASEHREF && rm -rf node_modules" ]
 RUN chmod +x cmd.sh
