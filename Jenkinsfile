@@ -6,6 +6,7 @@ pipeline {
       ORG               = 'ryandawsonuk'
       APP_NAME          = 'activiti-cloud-demo-ui'
       CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
+      BASEHREF = '/ui/'
     }
     stages {
       stage('CI Build and push snapshot') {
