@@ -21,5 +21,5 @@ sed -e "s@http://activiti-cloud-sso-idm-kub:30080@${ACT_GATEWAY_URL}@g" \
 mkdir public
 mv dist public/ui
 
-http-server -p 3000 public
+http-server -c-1 -p 3000 public
 
