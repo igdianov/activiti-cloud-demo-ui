@@ -6,7 +6,7 @@ WORKDIR /home/node/app
 COPY . .
 ENV BASE-HREF "/"
 
-RUN npm install && npm run build --base-href $BASE-HREF && rm -rf node_modules
+RUN sh npm install && npm run build --base-href $BASE-HREF && rm -rf node_modules
 RUN chmod +x cmd.sh
 
 RUN npm install -g http-server
