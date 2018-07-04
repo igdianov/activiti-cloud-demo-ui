@@ -5,12 +5,14 @@ ACT_IDM_URL=${ACT_IDM_URL:-http://localhost:8081/auth/realms/springboot/protocol
 ACT_IDM_BASE_URL=$(echo $ACT_IDM_URL | cut -d / -f 1,2,3)
 ACT_IDM_PATH=${ACT_IDM_URL/${ACT_IDM_BASE_URL}/}
 ACT_IDM_CLIENT_ID=${ACT_IDM_CLIENT_ID:-activiti}
+BASEHREF=${BASEHREF:/}
 
 echo ACT_GATEWAY_URL=${ACT_GATEWAY_URL}
 echo ACT_IDM_URL=${ACT_IDM_URL}
 echo ACT_IDM_CLIENT_ID=${ACT_IDM_CLIENT_ID}
 echo ACT_IDM_BASE_URL=${ACT_IDM_BASE_URL}
 echo ACT_IDM_PATH=${ACT_IDM_PATH}
+echo BASEHREF=$BASEHREF
 
 sed -e "s@http://activiti-cloud-sso-idm-kub:30080@${ACT_GATEWAY_URL}@g" \
     -e "s@http://activiti-cloud-sso-idm-kub:30081@${ACT_IDM_BASE_URL}@g" \
