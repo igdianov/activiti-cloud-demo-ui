@@ -6,6 +6,7 @@ pipeline {
       ORG               = 'ryandawsonuk'
       APP_NAME          = 'activiti-cloud-demo-ui'
       CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
+      BASEHREF='/ui/'
     }
     stages {
       stage('CI Build and push snapshot') {
@@ -22,7 +23,7 @@ pipeline {
             sh "npm install"
           //  sh "CI=true DISPLAY=:99 npm test"
 
-            sh 'export VERSION=$PREVIEW_VERSION  && export BASEHREF="/ui/";skaffold run -f skaffold.yaml'
+            sh 'export VERSION=$PREVIEW_VERSION  && skaffold run -f skaffold.yaml'
 
             sh "jx step validate --min-jx-version 1.2.36"
             sh "jx step post build --image \$JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST:\$JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT/$ORG/$APP_NAME:$PREVIEW_VERSION"
