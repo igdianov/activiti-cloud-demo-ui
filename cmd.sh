@@ -18,5 +18,8 @@ sed -e "s@http://activiti-cloud-sso-idm-kub:30080@${ACT_GATEWAY_URL}@g" \
     -e "s@activiti@${ACT_IDM_CLIENT_ID}@g" \
     -i dist/app.config.json
 
-http-server -p 3000 dist
+mkdir public
+mv dist public/ui
+
+http-server -p 3000 public
 
