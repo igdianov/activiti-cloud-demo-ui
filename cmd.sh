@@ -21,12 +21,9 @@ sed -e "s@http://activiti-cloud-sso-idm-kub:30080@${ACT_GATEWAY_URL}@g" \
     -i dist/app.config.json
 
 if [ "$BASE_HREF" = "/" ]; then
-  echo "RUN DIST"
-  http-server  -p 3000 dist
+   http-server  -p 3000 dist
 else
-  echo "RUN public UI"
    mkdir public
    mv dist public/ui
-   mv images/* public/ui/assets/
    http-server  -p 3000 public/
 fi
