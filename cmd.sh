@@ -27,6 +27,6 @@ else
   echo "RUN public UI"
    mkdir public
    mv dist public/ui
-   mv images/* public/ui/assets/images
+   mv images/* public/ui/assets/
    http-server  -p 3000 public/
 fi
