@@ -24,6 +24,6 @@ if [ "$BASE_HREF" = "/" ]; then
    http-server  -p 3000 dist
 else
    mkdir public
-   mv dist public/ui
+   mv dist public/${BASE_HREF}
    http-server  -p 3000 public/
 fi
