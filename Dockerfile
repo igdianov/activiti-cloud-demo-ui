@@ -1,17 +1,19 @@
 FROM node:carbon
 
 WORKDIR /home/node/app
-
-
+RUN npm install -g http-server
 COPY . .
-RUN [ "sh", "-c","echo BASEHREF1=$BASEHREF"]
-ENV BASEHREF=${BASEHREF:-/}
-RUN [ "sh", "-c","echo BASEHREF2=$BASEHREF"]
 
-RUN [ "sh", "-c","npm install && npm run build -- --base-href $BASEHREF --deploy-url $BASEHREF && rm -rf node_modules" ]
+ARG BASE_HREF_ARG="/"
+
+
+ENV BASE_HREF=${BASE_HREF_ARG}
+RUN [ "sh", "-c","echo BASEHREF=$BASE_HREF"]
+RUN [ "sh", "-c","echo BASE_HREF_ARG=$BASE_HREF_ARG"]
+
+RUN [ "sh", "-c","npm install && npm run build -- --base-href $BASE_HREF --deploy-url $BASE_HREF && rm -rf node_modules" ]
 RUN chmod +x cmd.sh
 
-RUN npm install -g http-server
 
 EXPOSE 3000
 
